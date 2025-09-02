@@ -1,12 +1,12 @@
 
-# Use official Python image
+# use offical python image
 FROM python:3.9-slim
 
-# Set working directory
+#set working directory
 WORKDIR /app
 
-# Copy files
+# copy files
 COPY . /app
 
-# Run Python script
+#run python script
 CMD ["python", "app.py"]
