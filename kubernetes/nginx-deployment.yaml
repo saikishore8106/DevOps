@@ -17,3 +17,38 @@ template:
         image: nginx:latest
         ports:
         - containerPort: 80
+
+
+
+
+#configmap
+create a configmap
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_COLOR: blue
+  APP_MODE: production
+
+  then it to your deployment
+  envFrom:
+- configMapRef:
+    name: app-config
+
+now your app automatically gets enviroment values from configmap
+
+
+# secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secret
+type: Opaque
+data:
+  DB_USER: Sai
+  DB_PASS: Sai@123  
+
+and it use it in the deployment file
+envFrom:
+- secretRef:
+    name: db-secret
